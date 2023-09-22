@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <label for="pais">País </label>
+    <input list="paises" id="pais"><br>
+        <datalist id="paises">
+            <option value="Guatemala"></option>
+            <option value="Belice"></option>
+            <option value="El Salvador"></option>
+            <option value="Honduras"></option>
+            <option value="Nicaragua"></option>
+            <option value="Costa Rica"></option>
+            <option value="Panamá"></option>
+        </datalist>
+
+    <label for="nombre">Nombre </label>
+    <input type="text" id="nombre"><br>
+
+    <label for="horario">Horario </label>
+    <input type="text" id="horario"><br>
+
+    <label for="descripcion">Descripción </label>
+    <input type="text" id="descripcion">
+    <button onclick="guardar()">Guardar</button>
+    
+
+
+    <table border = "1" id="tabla">
+        <tr><th>Pais</th><th>Nombre</th><th>Horario</th><th>Descripción</th></tr>
+    </table>
+
+    <script>
+        function guardar(){
+            var tabla = document.getElementById("tabla");
+            var fila = document.createElement("tr");
+            var celda = document.createElement("td");
+
+            celda.textContent = document.getElementById("pais").value;
+            fila.appendChild(celda);
+
+            celda = document.createElement("td");
+            celda.textContent = document.getElementById("nombre").value;
+            fila.appendChild(celda);
+
+            celda = document.createElement("td");
+            celda.textContent = document.getElementById("horario").value;
+            fila.appendChild(celda);
+
+            celda = document.createElement("td");
+            celda.textContent = document.getElementById("descripcion").value;
+            fila.appendChild(celda);
+
+            tabla.appendChild(fila);
+        }
+    </script>
+</body>
+</html>
