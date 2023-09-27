@@ -7,6 +7,9 @@
 </head>
 <body>
     
+    <label for="codigo">Codigo</label>
+    <input type="text" id="codigo">
+
     <label for="pais">País </label>
     <input list="paises" id="pais"><br>
         <datalist id="paises">
@@ -36,24 +39,37 @@
     </table>
 
     <script>
+        localStorage.clear();
         function guardar(){
+            let codigo = document.getElementById("codigo").value;
+            let pais = document.getElementById("pais").value;
+            let nombre = document.getElementById("nombre").value;
+            let horario = document.getElementById("horario").value;
+            let descripcion = document.getElementById("descripcion").value;
+            let likes = 0;
+
+            let sitio = [pais, nombre, horario, descripcion, likes];
+
+            localStorage.setItem(codigo, JSON.stringify(sitio));
+            let datos = JSON.parse(localStorage.getItem(codigo));
+
             var tabla = document.getElementById("tabla");
             var fila = document.createElement("tr");
             var celda = document.createElement("td");
 
-            celda.textContent = document.getElementById("pais").value;
+            celda.textContent = datos[0];
             fila.appendChild(celda);
 
             celda = document.createElement("td");
-            celda.textContent = document.getElementById("nombre").value;
+            celda.textContent = datos[1];
             fila.appendChild(celda);
 
             celda = document.createElement("td");
-            celda.textContent = document.getElementById("horario").value;
+            celda.textContent = datos[2];
             fila.appendChild(celda);
 
             celda = document.createElement("td");
-            celda.textContent = document.getElementById("descripcion").value;
+            celda.textContent = datos[3];
             fila.appendChild(celda);
 
             tabla.appendChild(fila);
